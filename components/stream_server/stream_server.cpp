@@ -35,9 +35,11 @@ void StreamServerComponent::setup() {
 
 void StreamServerComponent::loop() {
     this->accept();
-    this->read();
-    this->flush();
-    this->write();
+    if (this->clients_.size() > 0){
+        this->read();
+        this->flush();
+        this->write();        
+    }    
     this->cleanup();
 }
 
